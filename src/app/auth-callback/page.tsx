@@ -11,11 +11,12 @@ export default function page() {
 
     const origin = searchParams.get('origin')
 
+    const URL = process.env.DEV_URL
 
     trpc.authCallback.useQuery(undefined, {
         onSuccess: ({ success }) => {
             if (success) {
-                router.push(origin ? `/${origin}` : '/dashboard')
+                router.push(origin ? `http://localhost:3000/${origin}` : `http://localhost:3000/dashboard`)
             }
         },
         onError: (err) => {
