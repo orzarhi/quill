@@ -7,8 +7,8 @@ import { Loader2 } from 'lucide-react'
 
 export default function page() {
     const router = useRouter()
-    const searchParams = useSearchParams()
 
+    const searchParams = useSearchParams()
     const origin = searchParams.get('origin')
 
     const URL = process.env.DEV_URL
@@ -16,7 +16,7 @@ export default function page() {
     trpc.authCallback.useQuery(undefined, {
         onSuccess: ({ success }) => {
             if (success) {
-                router.push(origin ? `http://localhost:3000/${origin}` : `http://localhost:3000/dashboard`)
+                router.push(origin ? `/${origin}` : `/dashboard`)
             }
         },
         onError: (err) => {
@@ -24,8 +24,6 @@ export default function page() {
                 router.push('/sign-in')
             }
         },
-        retry: true,
-        retryDelay: 500,
     })
 
     return (

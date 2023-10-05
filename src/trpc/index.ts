@@ -9,9 +9,10 @@ export const appRouter = router({
         const { getUser } = getKindeServerSession();
         const user = getUser();
 
-        if (!user.id || !user.email) {
+        if (!user?.id || !user?.email) {
             throw new TRPCError({ code: 'UNAUTHORIZED' });
         }
+
 
         const dbUser = await db.user.findFirst({
             where: { userKindeId: user.id },
@@ -42,7 +43,7 @@ export const appRouter = router({
 
             const file = await db.file.findFirst({
                 where: {
-                    id: input.key,
+                    key: input.key,
                     userId: userKindeId
                 },
             })

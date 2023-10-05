@@ -13,8 +13,6 @@ export const ourFileRouter = {
 
             if (!user || !user.id) throw new Error("Unauthorized");
 
-
-
             return { userId: user.id };
         })
         .onUploadComplete(async ({ metadata, file }) => {
