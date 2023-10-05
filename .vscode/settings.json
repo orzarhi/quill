@@ -6,6 +6,7 @@
     "nextjs",
     "tailwindcss",
     "tanstack",
-    "TRPC"
+    "TRPC",
+    "Uploadthing"
   ]
 }
