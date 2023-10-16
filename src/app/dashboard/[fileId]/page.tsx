@@ -1,4 +1,4 @@
-import { ChatWrapper } from '@/components/ChatWrapper'
+import { ChatWrapper } from '@/components/chat/ChatWrapper'
 import { PdfRenderer } from '@/components/PdfRenderer'
 import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
@@ -15,12 +15,10 @@ export default async function page({ params }: PageProps) {
 
     const { fileId } = params
 
-
     const { getUser } = getKindeServerSession()
     const user = getUser()
 
     if (!user || !user.id) redirect(`/auth-callback?origin=/dashboard/${fileId}}`)
-
 
     const file = await db.file.findFirst({
         where: {
@@ -42,7 +40,7 @@ export default async function page({ params }: PageProps) {
                 </div>
 
                 <div className='shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0'>
-                    <ChatWrapper />
+                    <ChatWrapper fileId={file.id} />
                 </div>
             </div>
         </div>
