@@ -4,12 +4,15 @@
     "clsx",
     "hookform",
     "kinde",
+    "langchain",
     "lucide",
     "nextjs",
+    "openai",
     "simplebar",
     "tailwindcss",
     "tanstack",
     "TRPC",
-    "Uploadthing"
+    "Uploadthing",
+    "vectorstores"
   ]
 }

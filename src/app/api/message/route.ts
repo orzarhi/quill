@@ -1,6 +1,7 @@
 import { db } from "@/db";
 import { SendMessageValidator } from "@/lib/validators/SendMessageValidator";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { NextRequest } from "next/server";
 
 export const POST = async (req: NextRequest) => {
@@ -31,6 +32,10 @@ export const POST = async (req: NextRequest) => {
             userId,
             fileId
         }
+    })
+
+    const embeddings = new OpenAIEmbeddings({
+        openAIApiKey: process.env.OPENAI_API_KEY,
     })
 
 }
